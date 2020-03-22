@@ -1,0 +1,4 @@
+0:0:0:0:0:0:0:1 - - [06/Jul/2019:15:38:25 +0800] "GET /brand/getbrand.do HTTP/1.1" 500 11253 http-bio-9101-exec-1 2452
+0:0:0:0:0:0:0:1 - - [06/Jul/2019:15:38:26 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9101-exec-3 2
+0:0:0:0:0:0:0:1 - - [06/Jul/2019:15:44:01 +0800] "GET /brand/getbrand.do HTTP/1.1" 500 11253 http-bio-9101-exec-1 2502
+0:0:0:0:0:0:0:1 - - [06/Jul/2019:16:20:03 +0800] "GET /brand/getbrand.do HTTP/1.1" 200 1133 http-bio-9101-exec-1 3267

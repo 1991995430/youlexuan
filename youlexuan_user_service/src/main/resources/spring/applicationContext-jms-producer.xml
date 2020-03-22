@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+<context:component-scan base-package="com.offcn"/>
+
+    <!-- 1、基于Activemq连接工厂类创建连接工厂-->
+    <bean id="activemqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://192.168.188.151:61616"/>
+    </bean>
+
+ <!-- 2、创建spring框架提供mq的连接工厂-->
+    <bean id="connectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
+        <!-- 配置-Activemq连接工厂-->
+        <property name="targetConnectionFactory" ref="activemqConnectionFactory"/>
+    </bean>
+
+    <!-- 3、创建jmsTemplate-->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <!-- 配置连接工厂-->
+        <property name="connectionFactory" ref="connectionFactory"/>
+    </bean>
+
+    <!-- 4、创建目标队列发送短信-->
+    <bean id="smsDestination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="youlexuan_queue_sms"/>
+    </bean>
+
+</beans>
